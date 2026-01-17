@@ -130,6 +130,38 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://uqda.github.io/whitepaper.html" />
     </url>
     <url>
+        <loc>https://uqda.github.io/technologies.html</loc>
+        <lastmod>2026-01-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://uqda.github.io/ar/technologies.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://uqda.github.io/technologies.html" />
+    </url>
+    <url>
+        <loc>https://uqda.github.io/how-it-works.html</loc>
+        <lastmod>2026-01-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://uqda.github.io/ar/how-it-works.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://uqda.github.io/how-it-works.html" />
+    </url>
+    <url>
+        <loc>https://uqda.github.io/ar/technologies.html</loc>
+        <lastmod>2026-01-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://uqda.github.io/ar/technologies.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://uqda.github.io/technologies.html" />
+    </url>
+    <url>
+        <loc>https://uqda.github.io/ar/how-it-works.html</loc>
+        <lastmod>2026-01-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://uqda.github.io/ar/how-it-works.html" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://uqda.github.io/how-it-works.html" />
+    </url>
+    <url>
         <loc>https://uqda.github.io/ar/</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>

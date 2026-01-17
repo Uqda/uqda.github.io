@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="How Uqda Network Works - Complete explanation of network operation from installation to data transmission, encryption, and node communication">
+    <meta name="keywords" content="Uqda Network, how it works, network operation, encryption, node communication, routing, packet forwarding">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="How It Works - Uqda Network">
+    <meta property="og:description" content="Complete explanation of how Uqda Network operates from installation to data transmission">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uqda.github.io/how-it-works.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How It Works - Uqda Network">
+    <meta name="twitter:description" content="Complete explanation of how Uqda Network operates">
+    <title>How It Works - Uqda Network</title>
+    <link rel="canonical" href="https://uqda.github.io/how-it-works.html">
+    <link rel="alternate" hreflang="ar" href="https://uqda.github.io/ar/how-it-works.html">
+    <link rel="alternate" hreflang="en" href="https://uqda.github.io/how-it-works.html">
+    <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "How It Works - Uqda Network",
+        "description": "Complete explanation of how Uqda Network operates from installation to data transmission",
+        "url": "https://uqda.github.io/how-it-works.html",
+        "inLanguage": "en"
+    }
+    </script>
+    <style>
+        .step-box {
+            border: 2px solid #000;
+            padding: 25px;
+            margin: 25px 0;
+            background: #fff;
+        }
+        .step-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        .code-example {
+            background: #000;
+            color: #00ff00;
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid #000;
+            border-radius: 2px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .diagram-box {
+            background: #f9f9f9;
+            border: 2px solid #000;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .flow-arrow {
+            text-align: center;
+            font-size: 30px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><a href="index.html">UQDA NETWORK</a></h1>
+            <div class="subtitle">HOW IT WORKS</div>
+        </div>
+
+        <div class="navbar">
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">HOME</a>
+                <a href="about.html" class="navbar-link">ABOUT</a>
+                <a href="installation.html" class="navbar-link">INSTALL</a>
+                <a href="configuration.html" class="navbar-link">CONFIG</a>
+                <a href="admin.html" class="navbar-link">ADMIN</a>
+                <a href="faq.html" class="navbar-link">FAQ</a>
+                <a href="uqda_network_docs.html" class="navbar-link">DOCS</a>
+                <a href="whitepaper.html" class="navbar-link">WHITEPAPER</a>
+                <a href="technologies.html" class="navbar-link">TECHNOLOGIES</a>
+                <a href="how-it-works.html" class="navbar-link">HOW IT WORKS</a>
+            </div>
+            <a href="ar/how-it-works.html" class="navbar-lang">العربية</a>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// OVERVIEW</div>
+            <p>This page explains how Uqda Network operates from the moment you install it until data is transmitted between nodes. We'll cover key generation, node identification, encryption, routing, and packet forwarding.</p>
+        </div>
+
+        <!-- Step 1: Installation -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">STEP 1: INSTALLATION</div>
+                <p>When you install Uqda, the system performs the following:</p>
+                <ol style="margin-left: 30px; margin-bottom: 20px;">
+                    <li><strong>Package Installation:</strong> The installer places binaries in system directories</li>
+                    <li><strong>Service Setup:</strong> Creates system service for automatic startup (optional)</li>
+                    <li><strong>Binary Location:</strong> <code>uqda</code> (main daemon) and <code>uqdactl</code> (control utility)</li>
+                </ol>
+                <div class="code-example"># Linux installation example
+sudo dpkg -i uqda-debian-amd64.deb
+
+# Files installed:
+# /usr/bin/uqda          - Main daemon
+# /usr/bin/uqdactl       - Control utility
+# /etc/uqda/             - Configuration directory (created on first run)</div>
+            </div>
+        </div>
+
+        <!-- Step 2: Initialization -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">STEP 2: INITIALIZATION & KEY GENERATION</div>
+                <p>When Uqda starts for the first time:</p>
+                
+                <h3>2.1 Key Pair Generation</h3>
+                <p>Uqda generates a cryptographic key pair using Ed25519:</p>
+                <div class="diagram-box">Key Generation Process:
+
+1. Generate Ed25519 Key Pair:
+   ├─ Private Key (32 bytes) - KEPT SECRET
+   └─ Public Key (32 bytes) - YOUR NODE IDENTITY
+
+2. Private Key Storage:
+   ├─ Option A: Random key (auto-config mode)
+   └─ Option B: Loaded from file (config mode)
+
+3. Public Key Usage:
+   ├─ Node Identity (who you are)
+   ├─ IPv6 Address Derivation
+   └─ Encryption Target (others encrypt to you)</div>
+
+                <h3>2.2 IPv6 Address Derivation</h3>
+                <p>Your permanent IPv6 address is derived from your public key:</p>
+                <div class="code-example">Algorithm:
+1. Take public key (32 bytes)
+2. Bitwise invert (NOT operation)
+3. Count leading 1 bits
+4. Truncate and format as IPv6
+5. Result: Address in 0200::/7 range
+
+Example:
+Public Key: ed25519_public_key_bytes...
+         ↓
+IPv6 Address: 200:xxxx:xxxx:xxxx::1</div>
+
+                <h3>2.3 Configuration File Creation</h3>
+                <p>If using config file mode:</p>
+                <div class="code-example"># Generate configuration
+uqda -genconf > uqda.conf
+
+# File contains:
+{
+  "PrivateKey": "base64_encoded_private_key",
+  "Peers": [],
+  "Listen": [],
+  "AdminListen": "unix:///var/run/uqda.sock"
+}</div>
+            </div>
+        </div>
+
+        <!-- Step 3: Node Startup -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">STEP 3: NODE STARTUP</div>
+                <p>When you run <code>uqda</code>:</p>
+                
+                <h3>3.1 Core Components Initialization</h3>
+                <div class="diagram-box">Startup Sequence:
+
+1. Load Configuration
+   ├─ Read private key
+   ├─ Parse peer list
+   └─ Set admin socket path
+
+2. Initialize Core Components
+   ├─ Core Router (routing engine)
+   ├─ TUN Interface (virtual network)
+   ├─ Link Manager (peer connections)
+   ├─ Protocol Handler (routing protocol)
+   └─ Admin Socket (control interface)
+
+3. Create TUN Interface
+   ├─ Linux: /dev/net/tun
+   ├─ Windows: Wintun adapter
+   └─ macOS: utun interface
+
+4. Assign IPv6 Address
+   └─ Your derived address: 200:xxxx:xxxx:xxxx::1</div>
+
+                <h3>3.2 Network Interface Setup</h3>
+                <p>The TUN interface appears in your system:</p>
+                <div class="code-example"># Linux example
+ip addr show uqda0
+# Shows: inet6 200:xxxx:xxxx:xxxx::1/128
+
+# Windows example
+netsh interface ipv6 show address "Uqda"
+# Shows your IPv6 address</div>
+            </div>
+        </div>
+
+        <!-- Step 4: Peering -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">STEP 4: ESTABLISHING PEER CONNECTIONS</div>
+                <p>Nodes connect to each other through peerings:</p>
+                
+                <h3>4.1 Static Peering (Manual)</h3>
+                <div class="code-example"># Add a peer
+uqdactl addPeer tcp://peer.example.com:12345
+
+# What happens:
+1. DNS lookup (cached for 5 minutes)
+2. TCP connection attempt (3s timeout)
+3. Handshake exchange (5s timeout)
+4. Key verification
+5. Connection established</div>
+
+                <h3>4.2 Handshake Process</h3>
+                <div class="diagram-box">Handshake Sequence:
+
+Node A                          Node B
+  │                               │
+  ├─ Connect TCP ────────────────>│
+  │                               │
+  ├─ Send Metadata ──────────────>│
+  │   ├─ Public Key              │
+  │   ├─ Protocol Version         │
+  │   └─ Priority                 │
+  │                               │
+  │<─ Receive Metadata ────────────┤
+  │                               │
+  ├─ Verify Version ──────────────>│
+  │                               │
+  │<─ Verify Version ─────────────┤
+  │                               │
+  ├─ Connection Established <─────>│</div>
+
+                <h3>4.3 Multicast Discovery (Automatic)</h3>
+                <p>On local networks, nodes can discover each other automatically:</p>
+                <div class="code-example"># Multicast beacon sent to: [ff02::114]:9001
+# Any node on same subnet receives beacon
+# Automatic peering attempt initiated
+# No configuration needed!</div>
+            </div>
+        </div>
+
+        <!-- Step 5: Routing -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">STEP 5: ROUTING PROTOCOL</div>
+                <p>Once connected, nodes exchange routing information:</p>
+                
+                <h3>5.1 Spanning Tree Construction</h3>
+                <div class="diagram-box">Tree Building:
+
+1. Root Selection
+   └─ Node with lowest public key becomes root
+
+2. Tree Propagation
+   ├─ Root broadcasts tree info
+   ├─ Each node calculates distance
+   └─ Coordinates assigned
+
+3. Tree Structure:
+        Root (lowest key)
+        /    \
+    Node A  Node B
+     /  \      |
+  Node C Node D</div>
+
+                <h3>5.2 Keyspace Routing (DHT)</h3>
+                <p>Nodes exchange bloom filters describing reachable keys:</p>
+                <div class="code-example"># Each node maintains:
+- Bloom filter of reachable keys
+- Routing table entries
+- Path information
+
+# When forwarding:
+1. Check if destination in local bloom filter
+2. If yes, forward to known path
+3. If no, forward toward keyspace position
+4. Intermediate nodes update routing tables</div>
+            </div>
+        </div>
+
+        <!-- Step 6: Encryption -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">STEP 6: ENCRYPTION & DECRYPTION</div>
+                <p>All traffic is encrypted end-to-end:</p>
+                
+                <h3>6.1 Encryption Process (Sending)</h3>
+                <div class="diagram-box">Encryption Pipeline:
+
+Application Data (Plaintext)
+        │
+        ▼
+┌───────────────────┐
+│ Get Destination   │
+│ Public Key        │
+└─────────┬─────────┘
+        │
+        ▼
+┌───────────────────┐
+│ Generate Ephemeral│
+│ Key (X25519)      │
+└─────────┬─────────┘
+        │
+        ▼
+┌───────────────────┐
+│ ChaCha20-Poly1305 │
+│ Encryption        │
+│ ├─ Stream cipher  │
+│ └─ Auth tag      │
+└─────────┬─────────┘
+        │
+        ▼
+Encrypted Packet (Ciphertext)</div>
+
+                <h3>6.2 Decryption Process (Receiving)</h3>
+                <div class="diagram-box">Decryption Pipeline:
+
+Encrypted Packet Received
+        │
+        ▼
+┌───────────────────┐
+│ Extract Metadata  │
+│ (ephemeral key)   │
+└─────────┬─────────┘
+        │
+        ▼
+┌───────────────────┐
+│ Derive Session    │
+│ Key (X25519)      │
+└─────────┬─────────┘
+        │
+        ▼
+┌───────────────────┐
+│ ChaCha20-Poly1305 │
+│ Decryption        │
+│ ├─ Verify tag    │
+│ └─ Decrypt data  │
+└─────────┬─────────┘
+        │
+        ▼
+Application Data (Plaintext)</div>
+
+                <h3>6.3 Key Exchange Details</h3>
+                <div class="code-example"># For each packet:
+1. Sender generates ephemeral key pair (X25519)
+2. Uses destination's public key (Ed25519 → X25519)
+3. Derives shared secret
+4. Encrypts with ChaCha20-Poly1305
+5. Receiver uses own private key to decrypt
+
+# Forward Secrecy:
+- Each packet uses new ephemeral key
+- Compromised key doesn't affect past traffic
+- Future traffic remains secure</div>
+            </div>
+        </div>
+
+        <!-- Step 7: Packet Forwarding -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">STEP 7: PACKET FORWARDING</div>
+                <p>How packets travel through the network:</p>
+                
+                <h3>7.1 Sending a Packet</h3>
+                <div class="diagram-box">Packet Journey:
+
+Your Application
+    │
+    ├─ Sends IPv6 packet to: 200:yyyy:yyyy:yyyy::1
+    │
+    ▼
+TUN Interface (uqda0)
+    │
+    ├─ Uqda receives packet
+    │
+    ▼
+Routing Engine
+    │
+    ├─ Looks up destination in routing table
+    ├─ Finds path: You → Node A → Node B → Destination
+    │
+    ▼
+Encryption Layer
+    │
+    ├─ Encrypts with destination's public key
+    │
+    ▼
+Link Manager
+    │
+    ├─ Forwards to Node A (first hop)
+    │
+    ▼
+Node A (Intermediate)
+    │
+    ├─ Receives encrypted packet
+    ├─ Cannot decrypt (doesn't have destination key)
+    ├─ Looks up next hop: Node B
+    ├─ Forwards to Node B
+    │
+    ▼
+Node B (Intermediate)
+    │
+    ├─ Receives encrypted packet
+    ├─ Cannot decrypt
+    ├─ Forwards to Destination
+    │
+    ▼
+Destination Node
+    │
+    ├─ Receives encrypted packet
+    ├─ Decrypts with own private key
+    ├─ Delivers to application
+    │
+    ▼
+Destination Application</div>
+
+                <h3>7.2 Routing Decision</h3>
+                <div class="code-example"># Routing algorithm:
+1. Check if destination is direct peer
+   └─ If yes: send directly
+
+2. Check routing table for path
+   └─ If found: forward to next hop
+
+3. Use keyspace routing (DHT)
+   └─ Forward toward destination's key position
+
+4. Fallback to spanning tree
+   └─ Use tree routing if DHT fails</div>
+            </div>
+        </div>
+
+        <!-- Step 8: Real-World Examples -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">STEP 8: REAL-WORLD EXAMPLES</div>
+                
+                <h3>8.1 Sending a File</h3>
+                <div class="code-example"># Scenario: Send file via SCP
+
+1. You run: scp file.txt user@[200:yyyy:yyyy:yyyy::1]:/home/user/
+2. SCP creates TCP connection to destination
+3. TCP packets sent to uqda0 interface
+4. Uqda encrypts each packet with destination's public key
+5. Packets routed through network (encrypted at each hop)
+6. Destination receives encrypted packets
+7. Destination decrypts with own private key
+8. TCP connection established, file transfer begins</div>
+
+                <h3>8.2 Playing a Game</h3>
+                <div class="code-example"># Scenario: Multiplayer game connection
+
+1. Game client connects to server at [200:zzzz:zzzz:zzzz::1]
+2. Each game packet (position, actions) sent via Uqda
+3. Packets encrypted end-to-end
+4. Low latency routing (direct path when possible)
+5. Server receives encrypted packets, decrypts
+6. Game state synchronized securely</div>
+
+                <h3>8.3 Traceroute (Path Discovery)</h3>
+                <div class="code-example"># Run traceroute to see path
+traceroute -6 200:yyyy:yyyy:yyyy::1
+
+# Output shows:
+1  200:xxxx:xxxx:xxxx::1 (your node)    0.000 ms
+2  200:aaaa:aaaa:aaaa::1 (Node A)       15.234 ms
+3  200:bbbb:bbbb:bbbb::1 (Node B)       28.567 ms
+4  200:yyyy:yyyy:yyyy::1 (destination)  35.123 ms
+
+# Each hop represents:
+- A node forwarding your packet
+- Encryption/decryption at each hop (for routing)
+- But payload remains encrypted to destination</div>
+            </div>
+        </div>
+
+        <!-- Step 9: Network Maintenance -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">STEP 9: NETWORK MAINTENANCE</div>
+                
+                <h3>9.1 Automatic Path Recovery</h3>
+                <p>If a link fails:</p>
+                <div class="code-example"># What happens:
+1. Node detects connection loss
+2. Routing table updated
+3. Alternative path discovered
+4. Traffic rerouted automatically
+5. No manual intervention needed</div>
+
+                <h3>9.2 Connection Monitoring</h3>
+                <div class="code-example"># Check your connections
+uqdactl getPeers
+
+# Output:
+Peer: tcp://peer.example.com:12345
+  ├─ Status: Connected
+  ├─ Uptime: 2h 15m
+  ├─ Bytes RX: 1.2 GB
+  ├─ Bytes TX: 850 MB
+  └─ Latency: 25ms</div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <div class="section-title">// SUMMARY</div>
+            <p><strong>The Complete Flow:</strong></p>
+            <ol style="margin-left: 30px; margin-bottom: 20px;">
+                <li><strong>Installation:</strong> System setup and binary installation</li>
+                <li><strong>Key Generation:</strong> Ed25519 key pair created, IPv6 address derived</li>
+                <li><strong>Node Startup:</strong> TUN interface created, core components initialized</li>
+                <li><strong>Peering:</strong> Connections established with other nodes (manual or automatic)</li>
+                <li><strong>Routing:</strong> Network topology discovered, routing tables built</li>
+                <li><strong>Encryption:</strong> All traffic encrypted with destination's public key</li>
+                <li><strong>Forwarding:</strong> Packets routed through network, encrypted at each hop</li>
+                <li><strong>Decryption:</strong> Destination decrypts with own private key</li>
+                <li><strong>Delivery:</strong> Data delivered to application</li>
+            </ol>
+            <p><strong>Key Security Features:</strong></p>
+            <ul style="margin-left: 30px; margin-bottom: 20px;">
+                <li>End-to-end encryption (intermediate nodes cannot read payload)</li>
+                <li>Forward secrecy (ephemeral keys for each packet)</li>
+                <li>Cryptographic identity (public key = node identity)</li>
+                <li>Permanent addressing (IPv6 address tied to identity)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

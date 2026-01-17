@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="كيف تعمل شبكة عُقدة - شرح كامل لعمل الشبكة من التثبيت حتى إرسال البيانات، التشفير، وتواصل العقد">
+    <meta name="keywords" content="عُقدة, كيف تعمل, عمل الشبكة, التشفير, تواصل العقد, التوجيه, إعادة توجيه الحزم">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="كيف تعمل - شبكة عُقدة">
+    <meta property="og:description" content="شرح كامل لكيفية عمل شبكة عُقدة من التثبيت حتى إرسال البيانات">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uqda.github.io/ar/how-it-works.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="كيف تعمل - شبكة عُقدة">
+    <meta name="twitter:description" content="شرح كامل لكيفية عمل شبكة عُقدة">
+    <title>كيف تعمل - شبكة عُقدة</title>
+    <link rel="canonical" href="https://uqda.github.io/ar/how-it-works.html">
+    <link rel="alternate" hreflang="ar" href="https://uqda.github.io/ar/how-it-works.html">
+    <link rel="alternate" hreflang="en" href="https://uqda.github.io/how-it-works.html">
+    <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "كيف تعمل - شبكة عُقدة",
+        "description": "شرح كامل لكيفية عمل شبكة عُقدة من التثبيت حتى إرسال البيانات",
+        "url": "https://uqda.github.io/ar/how-it-works.html",
+        "inLanguage": "ar"
+    }
+    </script>
+    <style>
+        .step-box {
+            border: 2px solid #000;
+            padding: 25px;
+            margin: 25px 0;
+            background: #fff;
+        }
+        .step-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        .code-example {
+            background: #000;
+            color: #00ff00;
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid #000;
+            border-radius: 2px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            direction: ltr;
+            text-align: left;
+        }
+        .diagram-box {
+            background: #f9f9f9;
+            border: 2px solid #000;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        .flow-arrow {
+            text-align: center;
+            font-size: 30px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><a href="index.html">شبكة عُقدة</a></h1>
+            <div class="subtitle">كيف تعمل</div>
+        </div>
+
+        <div class="navbar">
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">الرئيسية</a>
+                <a href="about.html" class="navbar-link">حول</a>
+                <a href="installation.html" class="navbar-link">التثبيت</a>
+                <a href="configuration.html" class="navbar-link">الإعداد</a>
+                <a href="admin.html" class="navbar-link">الإدارة</a>
+                <a href="faq.html" class="navbar-link">الأسئلة</a>
+                <a href="uqda_network_docs.html" class="navbar-link">الوثائق</a>
+                <a href="whitepaper.html" class="navbar-link">الورقة التقنية</a>
+                <a href="technologies.html" class="navbar-link">التقنيات</a>
+                <a href="how-it-works.html" class="navbar-link">كيف تعمل</a>
+            </div>
+            <a href="../how-it-works.html" class="navbar-lang">ENGLISH</a>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// نظرة عامة</div>
+            <p>هذه الصفحة تشرح كيف تعمل شبكة عُقدة من لحظة التثبيت حتى إرسال البيانات بين العقد. سنغطي توليد المفاتيح، تعريف العقدة، التشفير، التوجيه، وإعادة توجيه الحزم.</p>
+        </div>
+
+        <!-- Step 1: Installation -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">الخطوة 1: التثبيت</div>
+                <p>عند تثبيت عُقدة، يقوم النظام بما يلي:</p>
+                <ol style="margin-right: 30px; margin-bottom: 20px;">
+                    <li><strong>تثبيت الحزمة:</strong> يضع المثبت الملفات التنفيذية في مجلدات النظام</li>
+                    <li><strong>إعداد الخدمة:</strong> ينشئ خدمة نظامية للبدء التلقائي (اختياري)</li>
+                    <li><strong>موقع الملفات:</strong> <code>uqda</code> (البرنامج الرئيسي) و <code>uqdactl</code> (أداة التحكم)</li>
+                </ol>
+                <div class="code-example"># مثال تثبيت Linux
+sudo dpkg -i uqda-debian-amd64.deb
+
+# الملفات المثبتة:
+# /usr/bin/uqda          - البرنامج الرئيسي
+# /usr/bin/uqdactl       - أداة التحكم
+# /etc/uqda/             - مجلد الإعدادات (يُنشأ عند أول تشغيل)</div>
+            </div>
+        </div>
+
+        <!-- Step 2: Initialization -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">الخطوة 2: التهيئة وتوليد المفاتيح</div>
+                <p>عند بدء عُقدة لأول مرة:</p>
+                
+                <h3>2.1 توليد زوج المفاتيح</h3>
+                <p>تولد عُقدة زوج مفاتيح مشفرة باستخدام Ed25519:</p>
+                <div class="diagram-box">عملية توليد المفاتيح:
+
+1. توليد زوج مفاتيح Ed25519:
+   ├─ المفتاح الخاص (32 بايت) - يُحفظ سرياً
+   └─ المفتاح العام (32 بايت) - هوية عقدتك
+
+2. تخزين المفتاح الخاص:
+   ├─ الخيار أ: مفتاح عشوائي (وضع الإعداد التلقائي)
+   └─ الخيار ب: تحميل من ملف (وضع الإعداد اليدوي)
+
+3. استخدام المفتاح العام:
+   ├─ هوية العقدة (من أنت)
+   ├─ اشتقاق عنوان IPv6
+   └─ هدف التشفير (الآخرون يشفرون لك)</div>
+
+                <h3>2.2 اشتقاق عنوان IPv6</h3>
+                <p>يُشتق عنوان IPv6 الدائم من مفتاحك العام:</p>
+                <div class="code-example">الخوارزمية:
+1. أخذ المفتاح العام (32 بايت)
+2. عكس البتات (عملية NOT)
+3. عد البتات 1 الرائدة
+4. اقتطاع وتنسيق كـ IPv6
+5. النتيجة: عنوان في نطاق 0200::/7
+
+مثال:
+المفتاح العام: ed25519_public_key_bytes...
+         ↓
+عنوان IPv6: 200:xxxx:xxxx:xxxx::1</div>
+
+                <h3>2.3 إنشاء ملف الإعداد</h3>
+                <p>إذا كنت تستخدم وضع ملف الإعداد:</p>
+                <div class="code-example"># توليد الإعداد
+uqda -genconf > uqda.conf
+
+# الملف يحتوي على:
+{
+  "PrivateKey": "base64_encoded_private_key",
+  "Peers": [],
+  "Listen": [],
+  "AdminListen": "unix:///var/run/uqda.sock"
+}</div>
+            </div>
+        </div>
+
+        <!-- Step 3: Node Startup -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">الخطوة 3: بدء العقدة</div>
+                <p>عند تشغيل <code>uqda</code>:</p>
+                
+                <h3>3.1 تهيئة المكونات الأساسية</h3>
+                <div class="diagram-box">تسلسل البدء:
+
+1. تحميل الإعداد
+   ├─ قراءة المفتاح الخاص
+   ├─ تحليل قائمة الأقران
+   └─ تعيين مسار مقبس الإدارة
+
+2. تهيئة المكونات الأساسية
+   ├─ موجه Core (محرك التوجيه)
+   ├─ واجهة TUN (شبكة افتراضية)
+   ├─ مدير الروابط (اتصالات الأقران)
+   ├─ معالج البروتوكول (بروتوكول التوجيه)
+   └─ مقبس الإدارة (واجهة التحكم)
+
+3. إنشاء واجهة TUN
+   ├─ Linux: /dev/net/tun
+   ├─ Windows: محول Wintun
+   └─ macOS: واجهة utun
+
+4. تعيين عنوان IPv6
+   └─ عنوانك المشتق: 200:xxxx:xxxx:xxxx::1</div>
+
+                <h3>3.2 إعداد واجهة الشبكة</h3>
+                <p>تظهر واجهة TUN في نظامك:</p>
+                <div class="code-example"># مثال Linux
+ip addr show uqda0
+# يظهر: inet6 200:xxxx:xxxx:xxxx::1/128
+
+# مثال Windows
+netsh interface ipv6 show address "Uqda"
+# يظهر عنوان IPv6 الخاص بك</div>
+            </div>
+        </div>
+
+        <!-- Step 4: Peering -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">الخطوة 4: إنشاء اتصالات الأقران</div>
+                <p>تتصل العقد مع بعضها من خلال الاتصالات:</p>
+                
+                <h3>4.1 الاتصال الثابت (يدوي)</h3>
+                <div class="code-example"># إضافة قرين
+uqdactl addPeer tcp://peer.example.com:12345
+
+# ما يحدث:
+1. البحث عن DNS (مخزن مؤقت لمدة 5 دقائق)
+2. محاولة اتصال TCP (مهلة 3 ثوان)
+3. تبادل المصافحة (مهلة 5 ثوان)
+4. التحقق من المفاتيح
+5. إنشاء الاتصال</div>
+
+                <h3>4.2 عملية المصافحة</h3>
+                <div class="diagram-box">تسلسل المصافحة:
+
+العقدة أ                          العقدة ب
+  │                               │
+  ├─ الاتصال TCP ────────────────>│
+  │                               │
+  ├─ إرسال البيانات الوصفية ──────>│
+  │   ├─ المفتاح العام            │
+  │   ├─ إصدار البروتوكول         │
+  │   └─ الأولوية                 │
+  │                               │
+  │<─ استقبال البيانات الوصفية ────┤
+  │                               │
+  ├─ التحقق من الإصدار ───────────>│
+  │                               │
+  │<─ التحقق من الإصدار ───────────┤
+  │                               │
+  ├─ الاتصال منشأ <──────────────>│</div>
+
+                <h3>4.3 اكتشاف البث المتعدد (تلقائي)</h3>
+                <p>على الشبكات المحلية، يمكن للعقد اكتشاف بعضها تلقائياً:</p>
+                <div class="code-example"># إشارة البث المتعدد تُرسل إلى: [ff02::114]:9001
+# أي عقدة على نفس الشبكة الفرعية تستقبل الإشارة
+# محاولة اتصال تلقائية تُبدأ
+# لا حاجة للإعداد!</div>
+            </div>
+        </div>
+
+        <!-- Step 5: Routing -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">الخطوة 5: بروتوكول التوجيه</div>
+                <p>بمجرد الاتصال، تتبادل العقد معلومات التوجيه:</p>
+                
+                <h3>5.1 بناء الشجرة الممتدة</h3>
+                <div class="diagram-box">بناء الشجرة:
+
+1. اختيار الجذر
+   └─ العقدة ذات المفتاح العام الأقل تصبح جذراً
+
+2. انتشار الشجرة
+   ├─ الجذر يبث معلومات الشجرة
+   ├─ كل عقدة تحسب المسافة
+   └─ الإحداثيات تُخصص
+
+3. هيكل الشجرة:
+        الجذر (أقل مفتاح)
+        /    \
+    العقدة أ  العقدة ب
+     /  \      |
+  العقدة ج العقدة د</div>
+
+                <h3>5.2 توجيه فضاء المفاتيح (DHT)</h3>
+                <p>تتبادل العقد مرشحات bloom تصف المفاتيح القابلة للوصول:</p>
+                <div class="code-example"># كل عقدة تحافظ على:
+- مرشح bloom للمفاتيح القابلة للوصول
+- إدخالات جدول التوجيه
+- معلومات المسار
+
+# عند إعادة التوجيه:
+1. تحقق إذا كانت الوجهة في مرشح bloom المحلي
+2. إذا نعم، أعد التوجيه إلى المسار المعروف
+3. إذا لا، أعد التوجيه نحو موقع فضاء المفاتيح
+4. العقد المتوسطة تحدّث جداول التوجيه</div>
+            </div>
+        </div>
+
+        <!-- Step 6: Encryption -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">الخطوة 6: التشفير وفك التشفير</div>
+                <p>جميع حركة المرور مشفرة من طرف إلى طرف:</p>
+                
+                <h3>6.1 عملية التشفير (الإرسال)</h3>
+                <div class="diagram-box">خط أنابيب التشفير:
+
+بيانات التطبيق (نص عادي)
+        │
+        ▼
+┌───────────────────┐
+│ الحصول على المفتاح│
+│ العام للوجهة      │
+└─────────┬─────────┘
+        │
+        ▼
+┌───────────────────┐
+│ توليد مفتاح عابر  │
+│ (X25519)          │
+└─────────┬─────────┘
+        │
+        ▼
+┌───────────────────┐
+│ ChaCha20-Poly1305 │
+│ التشفير           │
+│ ├─ تدفق التشفير   │
+│ └─ علامة المصادقة │
+└─────────┬─────────┘
+        │
+        ▼
+حزمة مشفرة (نص مشفر)</div>
+
+                <h3>6.2 عملية فك التشفير (الاستقبال)</h3>
+                <div class="diagram-box">خط أنابيب فك التشفير:
+
+استقبال حزمة مشفرة
+        │
+        ▼
+┌───────────────────┐
+│ استخراج البيانات │
+│ الوصفية (مفتاح  │
+│ عابر)            │
+└─────────┬─────────┘
+        │
+        ▼
+┌───────────────────┐
+│ اشتقاق مفتاح      │
+│ الجلسة (X25519)   │
+└─────────┬─────────┘
+        │
+        ▼
+┌───────────────────┐
+│ ChaCha20-Poly1305 │
+│ فك التشفير        │
+│ ├─ التحقق من      │
+│    العلامة        │
+│ └─ فك تشفير       │
+│    البيانات       │
+└─────────┬─────────┘
+        │
+        ▼
+بيانات التطبيق (نص عادي)</div>
+
+                <h3>6.3 تفاصيل تبادل المفاتيح</h3>
+                <div class="code-example"># لكل حزمة:
+1. المرسل يولد زوج مفاتيح عابر (X25519)
+2. يستخدم المفتاح العام للوجهة (Ed25519 → X25519)
+3. يشتق السر المشترك
+4. يشفر بـ ChaCha20-Poly1305
+5. المستقبل يستخدم مفتاحه الخاص لفك التشفير
+
+# السرية الأمامية:
+- كل حزمة تستخدم مفتاح عابر جديد
+- المفتاح المخترق لا يؤثر على حركة المرور السابقة
+- حركة المرور المستقبلية تبقى آمنة</div>
+            </div>
+        </div>
+
+        <!-- Step 7: Packet Forwarding -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">الخطوة 7: إعادة توجيه الحزم</div>
+                <p>كيف تسافر الحزم عبر الشبكة:</p>
+                
+                <h3>7.1 إرسال حزمة</h3>
+                <div class="diagram-box">رحلة الحزمة:
+
+تطبيقك
+    │
+    ├─ يرسل حزمة IPv6 إلى: 200:yyyy:yyyy:yyyy::1
+    │
+    ▼
+واجهة TUN (uqda0)
+    │
+    ├─ عُقدة تستقبل الحزمة
+    │
+    ▼
+محرك التوجيه
+    │
+    ├─ يبحث عن الوجهة في جدول التوجيه
+    ├─ يجد المسار: أنت → العقدة أ → العقدة ب → الوجهة
+    │
+    ▼
+طبقة التشفير
+    │
+    ├─ تشفر بمفتاح الوجهة العام
+    │
+    ▼
+مدير الروابط
+    │
+    ├─ يعيد التوجيه إلى العقدة أ (القفزة الأولى)
+    │
+    ▼
+العقدة أ (متوسطة)
+    │
+    ├─ تستقبل حزمة مشفرة
+    ├─ لا تستطيع فك التشفير (ليس لديها مفتاح الوجهة)
+    ├─ تبحث عن القفزة التالية: العقدة ب
+    ├─ تعيد التوجيه إلى العقدة ب
+    │
+    ▼
+العقدة ب (متوسطة)
+    │
+    ├─ تستقبل حزمة مشفرة
+    ├─ لا تستطيع فك التشفير
+    ├─ تعيد التوجيه إلى الوجهة
+    │
+    ▼
+عقدة الوجهة
+    │
+    ├─ تستقبل حزمة مشفرة
+    ├─ تفك التشفير بمفتاحها الخاص
+    ├─ تسلم إلى التطبيق
+    │
+    ▼
+تطبيق الوجهة</div>
+
+                <h3>7.2 قرار التوجيه</h3>
+                <div class="code-example"># خوارزمية التوجيه:
+1. تحقق إذا كانت الوجهة قرين مباشر
+   └─ إذا نعم: أرسل مباشرة
+
+2. تحقق من جدول التوجيه للمسار
+   └─ إذا وُجد: أعد التوجيه إلى القفزة التالية
+
+3. استخدم توجيه فضاء المفاتيح (DHT)
+   └─ أعد التوجيه نحو موقع مفتاح الوجهة
+
+4. العودة إلى الشجرة الممتدة
+   └─ استخدم توجيه الشجرة إذا فشل DHT</div>
+            </div>
+        </div>
+
+        <!-- Step 8: Real-World Examples -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">الخطوة 8: أمثلة من العالم الحقيقي</div>
+                
+                <h3>8.1 إرسال ملف</h3>
+                <div class="code-example"># السيناريو: إرسال ملف عبر SCP
+
+1. تشغل: scp file.txt user@[200:yyyy:yyyy:yyyy::1]:/home/user/
+2. SCP ينشئ اتصال TCP للوجهة
+3. حزم TCP تُرسل إلى واجهة uqda0
+4. عُقدة تشفر كل حزمة بمفتاح الوجهة العام
+5. الحزم تُوجّه عبر الشبكة (مشفرة في كل قفزة)
+6. الوجهة تستقبل حزم مشفرة
+7. الوجهة تفك التشفير بمفتاحها الخاص
+8. اتصال TCP منشأ، نقل الملف يبدأ</div>
+
+                <h3>8.2 لعب لعبة</h3>
+                <div class="code-example"># السيناريو: اتصال لعبة متعددة اللاعبين
+
+1. عميل اللعبة يتصل بالخادم على [200:zzzz:zzzz:zzzz::1]
+2. كل حزمة لعبة (الموقع، الإجراءات) تُرسل عبر عُقدة
+3. الحزم مشفرة من طرف إلى طرف
+4. توجيه بزمن استجابة منخفض (مسار مباشر عند الإمكان)
+5. الخادم يستقبل حزم مشفرة، يفك التشفير
+6. حالة اللعبة متزامنة بشكل آمن</div>
+
+                <h3>8.3 Traceroute (اكتشاف المسار)</h3>
+                <div class="code-example"># شغّل traceroute لرؤية المسار
+traceroute -6 200:yyyy:yyyy:yyyy::1
+
+# المخرجات تظهر:
+1  200:xxxx:xxxx:xxxx::1 (عقدتك)    0.000 ms
+2  200:aaaa:aaaa:aaaa::1 (العقدة أ)       15.234 ms
+3  200:bbbb:bbbb:bbbb::1 (العقدة ب)       28.567 ms
+4  200:yyyy:yyyy:yyyy::1 (الوجهة)  35.123 ms
+
+# كل قفزة تمثل:
+- عقدة تعيد توجيه حزمتك
+- التشفير/فك التشفير في كل قفزة (للتوجيه)
+- لكن الحمولة تبقى مشفرة للوجهة</div>
+            </div>
+        </div>
+
+        <!-- Step 9: Network Maintenance -->
+        <div class="section">
+            <div class="step-box">
+                <div class="step-number">الخطوة 9: صيانة الشبكة</div>
+                
+                <h3>9.1 الاستعادة التلقائية للمسار</h3>
+                <p>إذا فشل رابط:</p>
+                <div class="code-example"># ما يحدث:
+1. العقدة تكتشف فقدان الاتصال
+2. جدول التوجيه يُحدّث
+3. مسار بديل يُكتشف
+4. حركة المرور تُعاد توجيهها تلقائياً
+5. لا حاجة لتدخل يدوي</div>
+
+                <h3>9.2 مراقبة الاتصال</h3>
+                <div class="code-example"># تحقق من اتصالاتك
+uqdactl getPeers
+
+# المخرجات:
+Peer: tcp://peer.example.com:12345
+  ├─ الحالة: متصل
+  ├─ وقت التشغيل: 2س 15د
+  ├─ بايتات RX: 1.2 GB
+  ├─ بايتات TX: 850 MB
+  └─ زمن الاستجابة: 25ms</div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <div class="section-title">// الملخص</div>
+            <p><strong>التدفق الكامل:</strong></p>
+            <ol style="margin-right: 30px; margin-bottom: 20px;">
+                <li><strong>التثبيت:</strong> إعداد النظام وتثبيت الملفات التنفيذية</li>
+                <li><strong>توليد المفاتيح:</strong> إنشاء زوج مفاتيح Ed25519، اشتقاق عنوان IPv6</li>
+                <li><strong>بدء العقدة:</strong> إنشاء واجهة TUN، تهيئة المكونات الأساسية</li>
+                <li><strong>الاتصال بالأقران:</strong> إنشاء اتصالات مع عقد أخرى (يدوي أو تلقائي)</li>
+                <li><strong>التوجيه:</strong> اكتشاف طوبولوجيا الشبكة، بناء جداول التوجيه</li>
+                <li><strong>التشفير:</strong> تشفير جميع حركة المرور بمفتاح الوجهة العام</li>
+                <li><strong>إعادة التوجيه:</strong> توجيه الحزم عبر الشبكة، مشفرة في كل قفزة</li>
+                <li><strong>فك التشفير:</strong> الوجهة تفك التشفير بمفتاحها الخاص</li>
+                <li><strong>التسليم:</strong> تسليم البيانات للتطبيق</li>
+            </ol>
+            <p><strong>ميزات الأمان الرئيسية:</strong></p>
+            <ul style="margin-right: 30px; margin-bottom: 20px;">
+                <li>تشفير من طرف إلى طرف (العقد المتوسطة لا تستطيع قراءة الحمولة)</li>
+                <li>السرية الأمامية (مفاتيح عابرة لكل حزمة)</li>
+                <li>الهوية المشفرة (المفتاح العام = هوية العقدة)</li>
+                <li>العناونة الدائمة (عنوان IPv6 مربوط بالهوية)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

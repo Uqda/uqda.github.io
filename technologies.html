@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Uqda Network Technologies - Complete list of technologies, packages, libraries, and tools used in Uqda Network">
+    <meta name="keywords" content="Uqda Network, technologies, packages, libraries, Go, ChaCha20, Ed25519, X25519, dependencies">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Technologies - Uqda Network">
+    <meta property="og:description" content="Complete list of technologies, packages, libraries, and tools used in Uqda Network">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uqda.github.io/technologies.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Technologies - Uqda Network">
+    <meta name="twitter:description" content="Complete list of technologies, packages, libraries, and tools used in Uqda Network">
+    <title>Technologies - Uqda Network</title>
+    <link rel="canonical" href="https://uqda.github.io/technologies.html">
+    <link rel="alternate" hreflang="ar" href="https://uqda.github.io/ar/technologies.html">
+    <link rel="alternate" hreflang="en" href="https://uqda.github.io/technologies.html">
+    <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Technologies - Uqda Network",
+        "description": "Complete list of technologies, packages, libraries, and tools used in Uqda Network",
+        "url": "https://uqda.github.io/technologies.html",
+        "inLanguage": "en"
+    }
+    </script>
+    <style>
+        .tech-category {
+            margin-bottom: 40px;
+        }
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border: 2px solid #000;
+        }
+        .tech-table th,
+        .tech-table td {
+            border: 1px solid #000;
+            padding: 15px;
+            text-align: left;
+        }
+        .tech-table th {
+            background: #000;
+            color: #fff;
+            font-weight: bold;
+        }
+        .tech-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .tech-table code {
+            background: #f5f5f5;
+            padding: 3px 6px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .tech-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #000;
+            color: #fff;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><a href="index.html">UQDA NETWORK</a></h1>
+            <div class="subtitle">TECHNOLOGIES & TOOLS</div>
+        </div>
+
+        <div class="navbar">
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">HOME</a>
+                <a href="about.html" class="navbar-link">ABOUT</a>
+                <a href="installation.html" class="navbar-link">INSTALL</a>
+                <a href="configuration.html" class="navbar-link">CONFIG</a>
+                <a href="admin.html" class="navbar-link">ADMIN</a>
+                <a href="faq.html" class="navbar-link">FAQ</a>
+                <a href="uqda_network_docs.html" class="navbar-link">DOCS</a>
+                <a href="whitepaper.html" class="navbar-link">WHITEPAPER</a>
+                <a href="technologies.html" class="navbar-link">TECHNOLOGIES</a>
+                <a href="how-it-works.html" class="navbar-link">HOW IT WORKS</a>
+            </div>
+            <a href="ar/technologies.html" class="navbar-lang">العربية</a>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// PROGRAMMING LANGUAGE</div>
+            <p><strong>Go (Golang)</strong> - Version 1.22+</p>
+            <p>Uqda Network is written entirely in Go, chosen for its excellent concurrency support, strong standard library, and cross-platform capabilities.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// CRYPTOGRAPHY</div>
+            <div class="tech-category">
+                <h3>Encryption Algorithms</h3>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Purpose</th>
+                            <th>Key Size</th>
+                            <th>Library</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>ChaCha20-Poly1305</code></td>
+                            <td>End-to-end encryption of all traffic</td>
+                            <td>256-bit</td>
+                            <td>golang.org/x/crypto</td>
+                        </tr>
+                        <tr>
+                            <td><code>Ed25519</code></td>
+                            <td>Digital signatures and node identity</td>
+                            <td>256-bit</td>
+                            <td>crypto/ed25519 (Go stdlib)</td>
+                        </tr>
+                        <tr>
+                            <td><code>X25519</code></td>
+                            <td>Key exchange (ephemeral keys)</td>
+                            <td>256-bit</td>
+                            <td>golang.org/x/crypto</td>
+                        </tr>
+                        <tr>
+                            <td><code>BLAKE2b</code></td>
+                            <td>Hashing for address derivation</td>
+                            <td>256-bit</td>
+                            <td>golang.org/x/crypto/blake2b</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// CORE DEPENDENCIES</div>
+            <div class="tech-category">
+                <h3>Network & Routing</h3>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Package</th>
+                            <th>Purpose</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>github.com/Arceliar/ironwood</code></td>
+                            <td>Core routing protocol implementation</td>
+                            <td>v0.0.0-20241213013129</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/Arceliar/phony</code></td>
+                            <td>Actor model for concurrency</td>
+                            <td>v0.0.0-20220903101357</td>
+                        </tr>
+                        <tr>
+                            <td><code>golang.org/x/net</code></td>
+                            <td>IPv6 networking, IP utilities</td>
+                            <td>v0.32.0</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/vishvananda/netlink</code></td>
+                            <td>Linux network interface management</td>
+                            <td>v1.3.0</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/wlynxg/anet</code></td>
+                            <td>Network abstraction layer</td>
+                            <td>v0.0.5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tech-category">
+                <h3>Transport Protocols</h3>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Package</th>
+                            <th>Protocol</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>github.com/quic-go/quic-go</code></td>
+                            <td>QUIC protocol support</td>
+                            <td>v0.48.2</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/coder/websocket</code></td>
+                            <td>WebSocket (WS/WSS) support</td>
+                            <td>v1.8.12</td>
+                        </tr>
+                        <tr>
+                            <td><code>net</code> (Go stdlib)</td>
+                            <td>TCP/TLS connections</td>
+                            <td>Built-in</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tech-category">
+                <h3>Virtual Network Interfaces</h3>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Package</th>
+                            <th>Platform</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>golang.zx2c4.com/wireguard</code></td>
+                            <td>Cross-platform TUN interface</td>
+                            <td>v0.0.0-20231211153847</td>
+                        </tr>
+                        <tr>
+                            <td><code>golang.zx2c4.com/wintun</code></td>
+                            <td>Windows TUN interface</td>
+                            <td>v0.0.0-20230126152724</td>
+                        </tr>
+                        <tr>
+                            <td><code>golang.zx2c4.com/wireguard/windows</code></td>
+                            <td>Windows-specific utilities</td>
+                            <td>v0.5.3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tech-category">
+                <h3>Utilities & Tools</h3>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Package</th>
+                            <th>Purpose</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>github.com/gologme/log</code></td>
+                            <td>Structured logging</td>
+                            <td>v1.3.0</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/hjson/hjson-go/v4</code></td>
+                            <td>Configuration file parsing (HJSON)</td>
+                            <td>v4.4.0</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/cheggaaa/pb/v3</code></td>
+                            <td>Progress bars</td>
+                            <td>v3.1.5</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/olekukonko/tablewriter</code></td>
+                            <td>Table formatting for CLI</td>
+                            <td>v0.0.5</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/hashicorp/go-syslog</code></td>
+                            <td>Syslog integration</td>
+                            <td>v1.0.0</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/kardianos/minwinsvc</code></td>
+                            <td>Windows service management</td>
+                            <td>v1.0.2</td>
+                        </tr>
+                        <tr>
+                            <td><code>suah.dev/protect</code></td>
+                            <td>Security hardening (OpenBSD pledge)</td>
+                            <td>v1.2.4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tech-category">
+                <h3>Data Structures</h3>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Package</th>
+                            <th>Purpose</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>github.com/bits-and-blooms/bloom/v3</code></td>
+                            <td>Bloom filters for routing</td>
+                            <td>v3.7.0</td>
+                        </tr>
+                        <tr>
+                            <td><code>github.com/bits-and-blooms/bitset</code></td>
+                            <td>Bit set operations</td>
+                            <td>v1.13.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// SYSTEM REQUIREMENTS</div>
+            <div class="tech-category">
+                <h3>Supported Platforms</h3>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Architecture</th>
+                            <th>Minimum Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Linux</td>
+                            <td>x86_64, ARM64</td>
+                            <td>Kernel 3.x+</td>
+                        </tr>
+                        <tr>
+                            <td>Windows</td>
+                            <td>x86_64, ARM64</td>
+                            <td>Windows 7+</td>
+                        </tr>
+                        <tr>
+                            <td>macOS</td>
+                            <td>Intel, Apple Silicon</td>
+                            <td>macOS 10.12+</td>
+                        </tr>
+                        <tr>
+                            <td>FreeBSD</td>
+                            <td>x86_64, ARM64</td>
+                            <td>FreeBSD 12+ (experimental)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// BUILD TOOLS</div>
+            <ul style="margin-left: 30px; margin-bottom: 20px;">
+                <li><strong>Go Toolchain</strong> - Version 1.22 or later</li>
+                <li><strong>Git</strong> - For version control</li>
+                <li><strong>Make</strong> - Build automation (optional)</li>
+                <li><strong>Cross-compilation</strong> - Supported via GOOS/GOARCH</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// PROTOCOL SPECIFICATIONS</div>
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Protocol Version</td>
+                        <td>0.5 (compatible with Yggdrasil v0.5)</td>
+                    </tr>
+                    <tr>
+                        <td>IPv6 Address Range</td>
+                        <td><code>0200::/7</code></td>
+                    </tr>
+                    <tr>
+                        <td>Encryption</td>
+                        <td>ChaCha20-Poly1305 (AEAD mode)</td>
+                    </tr>
+                    <tr>
+                        <td>Signing</td>
+                        <td>Ed25519 (256-bit)</td>
+                    </tr>
+                    <tr>
+                        <td>Key Exchange</td>
+                        <td>X25519 (ephemeral)</td>
+                    </tr>
+                    <tr>
+                        <td>Routing</td>
+                        <td>DHT (Distance Vector) + Spanning Tree</td>
+                    </tr>
+                    <tr>
+                        <td>Transport</td>
+                        <td>TCP, TLS, QUIC, WebSocket (WS/WSS)</td>
+                    </tr>
+                    <tr>
+                        <td>MTU</td>
+                        <td>Up to 65535 bytes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// LICENSE</div>
+            <p>Uqda Network is released under the <strong>LGPLv3</strong> license.</p>
+            <p>All dependencies maintain their respective licenses. Most are open-source and compatible with LGPLv3.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">// SOURCE CODE</div>
+            <p>Complete source code and dependency information:</p>
+            <ul style="margin-left: 30px; margin-bottom: 20px;">
+                <li><strong>Repository:</strong> <a href="https://github.com/Uqda/Core">https://github.com/Uqda/Core</a></li>
+                <li><strong>Dependencies:</strong> See <code>go.mod</code> in repository</li>
+                <li><strong>Build Instructions:</strong> See <code>README.md</code> in repository</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
