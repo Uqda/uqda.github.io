@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="الورقة التقنية لشبكة عُقدة - وثائق تقنية كاملة تغطي البنية، التوجيه، الأمان، الأداء، وتفاصيل التنفيذ">
+    <meta name="keywords" content="عُقدة, الورقة التقنية, الوثائق التقنية, شبكة mesh, بروتوكول التوجيه, التشفير, IPv6, الشبكات اللامركزية">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="الورقة التقنية - شبكة عُقدة">
+    <meta property="og:description" content="الورقة التقنية لشبكة عُقدة - وثائق تقنية كاملة تغطي البنية، التوجيه، الأمان، الأداء، وتفاصيل التنفيذ">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://uqda.github.io/ar/whitepaper.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="الورقة التقنية - شبكة عُقدة">
+    <meta name="twitter:description" content="الورقة التقنية لشبكة عُقدة - وثائق تقنية كاملة">
+    <title>الورقة التقنية - شبكة عُقدة</title>
+    <link rel="canonical" href="https://uqda.github.io/ar/whitepaper.html">
+    <link rel="alternate" hreflang="ar" href="https://uqda.github.io/ar/whitepaper.html">
+    <link rel="alternate" hreflang="en" href="https://uqda.github.io/whitepaper.html">
+    <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "شبكة عُقدة – الوثيقة التقنية",
+        "description": "وثائق تقنية كاملة تغطي البنية، التوجيه، الأمان، الأداء، وتفاصيل التنفيذ",
+        "author": {
+            "@type": "Organization",
+            "name": "شبكة عُقدة"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "شبكة عُقدة",
+            "url": "https://uqda.github.io/"
+        },
+        "datePublished": "2026-01-01",
+        "dateModified": "2026-01-17",
+        "inLanguage": "ar",
+        "url": "https://uqda.github.io/ar/whitepaper.html"
+    }
+    </script>
+    <style>
+        .whitepaper-content {
+            line-height: 1.9;
+            direction: rtl;
+            text-align: right;
+        }
+        .whitepaper-content h1 {
+            font-size: 36px;
+            margin: 40px 0 20px 0;
+            border-bottom: 4px solid #000;
+            padding-bottom: 15px;
+        }
+        .whitepaper-content h2 {
+            font-size: 28px;
+            margin: 35px 0 15px 0;
+            border-bottom: 3px solid #000;
+            padding-bottom: 10px;
+        }
+        .whitepaper-content h3 {
+            font-size: 22px;
+            margin: 25px 0 12px 0;
+            font-weight: bold;
+        }
+        .whitepaper-content h4 {
+            font-size: 18px;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+        }
+        .whitepaper-content p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+        .whitepaper-content ul, .whitepaper-content ol {
+            margin: 15px 0 15px 30px;
+        }
+        .whitepaper-content li {
+            margin: 8px 0;
+        }
+        .whitepaper-content strong {
+            font-weight: bold;
+        }
+        .whitepaper-content em {
+            font-style: italic;
+        }
+        .whitepaper-content code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            direction: ltr;
+            text-align: left;
+        }
+        .whitepaper-content pre {
+            background: #000;
+            color: #00ff00;
+            padding: 20px;
+            margin: 20px 0;
+            border: 3px solid #000;
+            border-radius: 2px;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        .whitepaper-content pre code {
+            background: transparent;
+            border: none;
+            padding: 0;
+            color: #00ff00;
+        }
+        .whitepaper-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border: 2px solid #000;
+        }
+        .whitepaper-content table th,
+        .whitepaper-content table td {
+            border: 1px solid #000;
+            padding: 12px;
+            text-align: right;
+        }
+        .whitepaper-content table th {
+            background: #000;
+            color: #fff;
+            font-weight: bold;
+        }
+        .whitepaper-content table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .whitepaper-content hr {
+            border: none;
+            border-top: 3px solid #000;
+            margin: 40px 0;
+        }
+        .whitepaper-content blockquote {
+            border-right: 4px solid #000;
+            padding-right: 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        .toc {
+            background: #fff;
+            border: 3px solid #000;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        .toc h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        .toc ul {
+            list-style: none;
+            margin-right: 0;
+        }
+        .toc li {
+            margin: 8px 0;
+        }
+        .toc a {
+            color: #000;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .whitepaper-content h1 {
+                font-size: 28px;
+            }
+            .whitepaper-content h2 {
+                font-size: 24px;
+            }
+            .whitepaper-content h3 {
+                font-size: 20px;
+            }
+            .whitepaper-content table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><a href="index.html">شبكة عُقدة</a></h1>
+            <div class="subtitle">الورقة التقنية</div>
+        </div>
+
+        <div class="navbar">
+            <div class="navbar-links">
+                <a href="index.html" class="navbar-link">الرئيسية</a>
+                <a href="about.html" class="navbar-link">حول</a>
+                <a href="installation.html" class="navbar-link">التثبيت</a>
+                <a href="configuration.html" class="navbar-link">الإعداد</a>
+                <a href="admin.html" class="navbar-link">الإدارة</a>
+                <a href="faq.html" class="navbar-link">الأسئلة</a>
+                <a href="uqda_network_docs.html" class="navbar-link">الوثائق</a>
+                <a href="whitepaper.html" class="navbar-link">الورقة التقنية</a>
+            </div>
+            <a href="../whitepaper.html" class="navbar-lang">ENGLISH</a>
+        </div>
+
+        <div class="section whitepaper-content">
+            <h1>شبكة عُقدة – الوثيقة التقنية</h1>
+            
+            <p><strong>الإصدار 1.0</strong><br>
+            يناير 2026</p>
+
+            <hr>
+
+            <div class="toc">
+                <h3>جدول المحتويات</h3>
+                <ul>
+                    <li><a href="#executive-summary">الملخص التنفيذي</a></li>
+                    <li><a href="#introduction">1. المقدمة</a></li>
+                    <li><a href="#architecture">2. نظرة عامة على البنية</a></li>
+                    <li><a href="#identity">3. الهوية والعناونة</a></li>
+                    <li><a href="#routing">4. بروتوكول التوجيه</a></li>
+                    <li><a href="#peering">5. الاتصال بالأقران والتوصيلية</a></li>
+                    <li><a href="#security">6. نموذج الأمان</a></li>
+                    <li><a href="#performance">7. تحسينات الأداء</a></li>
+                    <li><a href="#operational">8. الخصائص التشغيلية</a></li>
+                    <li><a href="#usecases">9. حالات الاستخدام</a></li>
+                    <li><a href="#limitations">10. القيود والأهداف غير المطلوبة</a></li>
+                    <li><a href="#status">11. حالة المشروع وخارطة الطريق</a></li>
+                    <li><a href="#specs">12. المواصفات التقنية</a></li>
+                    <li><a href="#comparison">13. التحليل المقارن</a></li>
+                    <li><a href="#conclusion">14. الخلاصة</a></li>
+                </ul>
+            </div>
+
+            <h2 id="executive-summary">الملخص التنفيذي</h2>
+
+            <p>شبكة عُقدة هي بروتوكول توجيه لامركزي مصمم لبناء شبكات mesh متعددة القفزات مرنة وذاتية التنظيم مع تشفير من طرف إلى طرف، وإعدادات دنيا، واستقلالية عن البنية التحتية المركزية.</p>
+
+            <p>المبنية على بدائيات تشفير مثبتة وخوارزميات توجيه مبتكرة، تمكن عُقدة من الاتصال المباشر بين الأقران عبر طوبولوجيات شبكية ديناميكية مع الحفاظ على عنونة مستقرة ومستقلة عن الموقع من خلال IPv6.</p>
+
+            <p>تقدم هذه الوثيقة البنية التقنية، ومبادئ التصميم، والتحسينات العملية التي تميز عُقدة كحل عملي لتحديات الشبكات اللامركزية الحديثة.</p>
+
+            <hr>
+
+            <h2 id="introduction">1. المقدمة</h2>
+
+            <h3>1.1 الدافع</h3>
+
+            <p>تواجه البنية التحتية للشبكة المعاصرة تحديات أساسية:</p>
+
+            <ul>
+                <li><strong>المركزية</strong>: الاعتماد الكبير على مزودي خدمة الإنترنت، وتدرجات توجيه BGP، وهندسة الأنظمة المستقلة</li>
+                <li><strong>تعقيد الإعداد</strong>: متطلبات الإعداد اليدوي التي لا تتوسع بشكل جيد</li>
+                <li><strong>جمود الطوبولوجيا</strong>: تكيف ضعيف مع ظروف الشبكة الديناميكية أو المؤقتة</li>
+                <li><strong>الاعتماد على البنية التحتية</strong>: عدم القدرة على العمل بدون اتصال إنترنت موجود</li>
+            </ul>
+
+            <p>حالات الاستخدام الناشئة تتطلب خصائص مختلفة:</p>
+
+            <ul>
+                <li>شبكات mesh يديرها المجتمع</li>
+                <li>الحوسبة الطرفية مع اتصال مباشر بين الأجهزة</li>
+                <li>شبكات مرنة في بيئات محدودة البنية التحتية</li>
+                <li>سيناريوهات النشر السريع (الاستجابة للطوارئ، التثبيتات المؤقتة)</li>
+                <li>التطبيقات من نظير إلى نظير التي تحافظ على الخصوصية</li>
+            </ul>
+
+            <p>تعالج عُقدة هذه المتطلبات من خلال نهج مختلف جوهرياً لتوجيه الشبكة وتنظيمها.</p>
+
+            <h3>1.2 فلسفة التصميم</h3>
+
+            <p>عُقدة مبنية على ثلاثة مبادئ أساسية:</p>
+
+            <ol>
+                <li><strong>اللامركزية افتراضياً</strong>: لا سلطات مركزية، أو منسقين، أو نقاط فشل واحدة</li>
+                <li><strong>البساطة في التشغيل</strong>: يجب أن تتشكل الشبكات تلقائياً مع تدخل بشري أدنى</li>
+                <li><strong>الأداء العملي</strong>: يجب أن تخضع الأناقة النظرية لقابلية الاستخدام في العالم الحقيقي</li>
+            </ol>
+
+            <h3>1.3 العلاقة مع شبكة Yggdrasil</h3>
+
+            <p>عُقدة Core هو <strong>عمل مشتق</strong> من بروتوكول شبكة Yggdrasil (v0.5)، يُحافظ عليه كمشروع مستقل مع التركيز على:</p>
+
+            <ul>
+                <li><strong>تحسينات الأداء</strong> للنشر في الإنتاج</li>
+                <li><strong>تحسينات تشغيلية</strong> بناءً على الاستخدام العملي</li>
+                <li><strong>أدوات محسّنة</strong> للمراقبة والتشخيص</li>
+            </ul>
+
+            <p><strong>التوافق مع البروتوكول</strong>: عقد عُقدة متوافقة مع البروتوكول مع عقد Yggdrasil v0.5 ويمكنها الاتصال معها بسلاسة.</p>
+
+            <p><strong>الحوكمة</strong>: تعمل عُقدة كمشروع مستقل بدورة إصدار خاصة بها، وأولويات، وخارطة طريق تطوير.</p>
+
+            <p>معلومات الاعتراف والترخيص الكاملة: <a href="https://github.com/Uqda/Core/blob/main/ATTRIBUTION.md">ATTRIBUTION.md</a></p>
+
+            <hr>
+
+            <h2 id="architecture">2. نظرة عامة على البنية</h2>
+
+            <h3>2.1 نموذج الشبكة</h3>
+
+            <p>تعمل عُقدة كشبكة <strong>overlay</strong> تعمل فوق البنية التحتية IP الموجودة، رغم أن تصميم البروتوكول لا يتطلب بشكل أساسي تشغيل overlay.</p>
+
+            <p>كل عُقدة شبكة تتكون من:</p>
+
+            <ul>
+                <li><strong>عملية موجه في مساحة المستخدم</strong>: موجه برمجي بعملية واحدة</li>
+                <li><strong>واجهة TUN افتراضية</strong>: حقن/استخراج حزم IPv6 لنظام التشغيل المضيف</li>
+                <li><strong>طبقة الاتصال بالأقران</strong>: إدارة الاتصال مع العقد المجاورة</li>
+                <li><strong>محرك التوجيه</strong>: اكتشاف المسار ومنطق إعادة توجيه الحزم</li>
+                <li><strong>واجهة إدارية</strong>: مقبس المراقبة والتحكم</li>
+            </ul>
+
+            <h3>2.2 مساواة العقد</h3>
+
+            <p>جميع العقد <strong>متكافئة وظيفياً</strong>. لا توجد:</p>
+
+            <ul>
+                <li>عقد جذر (رغم أن بناء الشجرة الممتدة ينتج جذوراً عابرة)</li>
+                <li>عقد فائقة أو منسقين مميزين</li>
+                <li>عقد بوابة (ما لم يتم تكوينها صراحة لخدمات محددة)</li>
+            </ul>
+
+            <p>يمكن لكل عُقدة في نفس الوقت:</p>
+
+            <ul>
+                <li>إنشاء حركة مرور</li>
+                <li>استقبال حركة مرور موجهة إليها</li>
+                <li>إعادة توجيه حركة مرور نيابة عن عقد أخرى</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="identity">3. الهوية والعناونة</h2>
+
+            <h3>3.1 الهوية المشفرة</h3>
+
+            <p>تمتلك كل عُقدة <strong>زوج مفتاح عام/خاص</strong> (Ed25519):</p>
+
+            <ul>
+                <li><strong>المفتاح العام</strong> يخدم كهوية العُقدة الحقيقية</li>
+                <li>يبقى المفتاح الخاص سرياً ويُستخدم لتوقيع رسائل البروتوكول</li>
+            </ul>
+
+            <h3>3.2 توليد عنوان IPv6</h3>
+
+            <p>يتم <strong>اشتقاق</strong> عنوان IPv6 مستقر <strong>بشكل حتمي</strong> من المفتاح العام:</p>
+
+            <pre><code>عنوان IPv6 = truncate(hash(public_key))</code></pre>
+
+            <p>هذا يوفر:</p>
+
+            <ul>
+                <li><strong>الاستقلال عن الموقع</strong>: العنوان مربوط بالهوية، وليس موقع الشبكة</li>
+                <li><strong>الحركة</strong>: تحتفظ العقد بعناوينها أثناء انتقالها عبر الشبكة</li>
+                <li><strong>لا تخصيص مركزي</strong>: لا DHCP، لا سجلات عناوين، لا تنسيق مطلوب</li>
+            </ul>
+
+            <h3>3.3 توافق التطبيقات</h3>
+
+            <p>معظم التطبيقات القادرة على IPv6 تعمل على عُقدة <strong>بدون تعديل</strong>، حيث تقدم الشبكة عناوين IPv6 قياسية لنظام التشغيل المضيف.</p>
+
+            <hr>
+
+            <h2 id="routing">4. بروتوكول التوجيه</h2>
+
+            <h3>4.1 أهداف التصميم</h3>
+
+            <p>يجب أن يلبي نظام التوجيه:</p>
+
+            <ul>
+                <li><strong>حالة دنيا</strong>: يجب ألا تحافظ العقد على جداول توجيه كاملة</li>
+                <li><strong>التقارب التلقائي</strong>: اكتشاف المسارات بدون إعداد يدوي</li>
+                <li><strong>الاستعادة السريعة</strong>: تكيف سريع مع تغيرات الطوبولوجيا</li>
+                <li><strong>القابلية للتوسع</strong>: تشغيل فعال مع نمو حجم الشبكة</li>
+            </ul>
+
+            <h3>4.2 نهج التوجيه</h3>
+
+            <p>تستخدم عُقدة <strong>مخطط توجيه هجين</strong>:</p>
+
+            <ol>
+                <li><strong>بناء الشجرة الممتدة</strong> للتنسيق ورسائل التمهيد</li>
+                <li><strong>التوجيه الجشع في فضاء المفاتيح</strong> باستخدام مبادئ جدول التجزئة الموزع</li>
+                <li><strong>التوجيه المصدر</strong> للمسارات المحسّنة عند التوفر</li>
+            </ol>
+
+            <h4>الشجرة الممتدة</h4>
+
+            <ul>
+                <li>توفر مزامنة عالمية</li>
+                <li>تمكن تخصيص إحداثيات للعقد</li>
+                <li>تُستخدم كآلية توجيه احتياطية</li>
+                <li>اختيار الجذر بناءً على المفتاح العام (الأقل يفوز)</li>
+            </ul>
+
+            <h4>توجيه فضاء المفاتيح</h4>
+
+            <ul>
+                <li>تتبادل العقد مرشحات bloom تصف نطاقات المفاتيح القابلة للوصول</li>
+                <li>تملأ العقد المتوسطة جداول التوجيه بمسارات فضاء المفاتيح</li>
+                <li>تُعاد توجيه الحزم نحو موقع الوجهة في فضاء المفاتيح</li>
+            </ul>
+
+            <h4>تحسين المسار</h4>
+
+            <ul>
+                <li>يثبت توجيه الشجرة الاتصال الأولي</li>
+                <li>تُكتشف مسارات أقصر من خلال توجيه فضاء المفاتيح المباشر</li>
+                <li>تُستخدم المسارات المصدر عندما تكون أكثر كفاءة من توجيه فضاء المفاتيح</li>
+                <li>العودة التلقائية إلى توجيه الشجرة إذا فشل المسار المحسّن</li>
+            </ul>
+
+            <h3>4.3 أمان البروتوكول</h3>
+
+            <p>جميع رسائل التوجيه <strong>موقعة مشفرياً</strong> لمنع:</p>
+
+            <ul>
+                <li>التزوير</li>
+                <li>العبث</li>
+                <li>هجمات حقن المسار</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="peering">5. الاتصال بالأقران والتوصيلية</h2>
+
+            <h3>5.1 إنشاء الاتصال بالأقران</h3>
+
+            <p>تنشئ العقد اتصالات الأقران من خلال آليتين:</p>
+
+            <h4>الاتصال الثابت</h4>
+            <ul>
+                <li>إعداد يدوي لعناوين الأقران</li>
+                <li>مستمر عبر إعادة التشغيل</li>
+                <li>يمكن أن يعمل على أي نقل IP (LAN، WAN، الإنترنت)</li>
+            </ul>
+
+            <h4>اكتشاف البث المتعدد</h4>
+            <ul>
+                <li>اكتشاف تلقائي للأقران على الشبكات المحلية</li>
+                <li>إعلانات بث متعدد على مستوى الرابط</li>
+                <li>تشغيل "plug-and-play" بدون إعدادات</li>
+            </ul>
+
+            <h3>5.2 النقل</h3>
+
+            <p>اتصالات الأقران تدعم:</p>
+
+            <ul>
+                <li><strong>TCP</strong> (مع TLS اختياري)</li>
+                <li><strong>QUIC</strong> (في التطبيقات التجريبية)</li>
+                <li>نقل <strong>IPv4 أو IPv6</strong></li>
+            </ul>
+
+            <h3>5.3 عبور NAT</h3>
+
+            <p>تتعامل عُقدة مع بيئات NAT بسلاسة:</p>
+
+            <ul>
+                <li>اتصالات الأقران <strong>ثنائية الاتجاه</strong> بمجرد إنشائها</li>
+                <li>لا حاجة لإعادة توجيه المنافذ للاتصالات الصادرة</li>
+                <li>العقد خلف NAT تبقى قابلة للوصول بالكامل داخل شبكة عُقدة</li>
+                <li>فعالة حتى مع NAT على مستوى الناقل (CGNAT)</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="security">6. نموذج الأمان</h2>
+
+            <h3>6.1 نموذج التهديد</h3>
+
+            <p>تفترض عُقدة:</p>
+
+            <ul>
+                <li><strong>أعداء الشبكة</strong>: قد تكون أي عُقدة أو رابط اتصال خاضعاً لسيطرة مهاجم</li>
+                <li><strong>المراقبة السلبية</strong>: قد تُراقب حركة المرور في أي نقطة</li>
+                <li><strong>التدخل النشط</strong>: قد تُسقط الحزم، أو تُؤخر، أو يُعاد ترتيبها</li>
+            </ul>
+
+            <p>عُقدة <strong>لا</strong> تحاول إخفاء:</p>
+
+            <ul>
+                <li>علاقات الاتصال بالأقران (من يتصل بمن)</li>
+                <li>أنماط حركة المرور أو التوقيت</li>
+                <li>هويات المصدر والوجهة</li>
+            </ul>
+
+            <h3>6.2 الحماية المشفرة</h3>
+
+            <p>جميع حركة المرور <strong>مشفرة من طرف إلى طرف</strong>:</p>
+
+            <ul>
+                <li>يستخدم التشفير المفتاح العام للوجهة</li>
+                <li>السرية الأمامية من خلال تبادل مفاتيح عابر</li>
+                <li>لا يمكن للعقد المتوسطة فك تشفير الحمولة</li>
+                <li>المصادقة تمنع انتحال الشخصية</li>
+            </ul>
+
+            <h3>6.3 ما ليست عليه عُقدة</h3>
+
+            <p><strong>عُقدة ليست شبكة إخفاء هوية.</strong> لا توفر:</p>
+
+            <ul>
+                <li>إخفاء هوية حركة المرور</li>
+                <li>التوجيه البصلي</li>
+                <li>الخدمات المخفية</li>
+                <li>عدم إمكانية ربط الاتصالات</li>
+            </ul>
+
+            <p>يمكن للأقران المباشرين مراقبة عناوين IP وقد يستنتجون الموقع أو الهوية.</p>
+
+            <h3>6.4 حالة التدقيق الأمني</h3>
+
+            <p><strong>الحالة الحالية</strong>: عُقدة <strong>لم تخضع لتدقيق أمني مستقل</strong>.</p>
+
+            <p>الكود يرث تطبيقات التشفير من:</p>
+            <ul>
+                <li>مكتبة Go القياسية (مدققة)</li>
+                <li>شبكة Yggdrasil (مراجعة مجتمعية منذ 2017)</li>
+            </ul>
+
+            <p><strong>التوصيات</strong>:</p>
+            <ul>
+                <li>لا تستخدم للتطبيقات عالية الأمان بدون مراجعة مستقلة</li>
+                <li>افترض وجود ثغرات غير مكتشفة</li>
+                <li>الدفاع المتعدد الطبقات: استخدم التشفير على مستوى التطبيق للبيانات الحساسة</li>
+            </ul>
+
+            <p><strong>مخطط</strong>: تدقيق ممول من المجتمع مجدول لـ Q2 2026.</p>
+
+            <hr>
+
+            <h2 id="performance">7. تحسينات الأداء</h2>
+
+            <p>تدمج عُقدة تحسينات عملية بناءً على خبرة النشر في العالم الحقيقي:</p>
+
+            <h3>7.1 إنشاء الاتصال</h3>
+
+            <ul>
+                <li><strong>تقليل مهلة المصافحة</strong>: 5s (محسّن من 6s)</li>
+                <li><strong>اتصال TCP أسرع</strong>: مهلة 3s</li>
+                <li><strong>خوارزمية backoff تكيفية</strong>:
+                    <ul>
+                        <li>المحاولة الأولى: 100ms</li>
+                        <li>المحاولة الثانية: 250ms</li>
+                        <li>المحاولة الثالثة: 500ms</li>
+                        <li>أسي بعد ذلك</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>7.2 تخزين DNS مؤقت</h3>
+
+            <ul>
+                <li>عمليات البحث الناجحة مخزنة لمدة 5 دقائق</li>
+                <li>عمليات البحث الفاشلة مخزنة لمدة 30 ثانية</li>
+                <li>يقلل زمن الاستجابة بمقدار 10-30ms لكل اتصال</li>
+            </ul>
+
+            <h3>7.3 مهلات البروتوكول</h3>
+
+            <ul>
+                <li>WebSocket: مهلة قراءة/كتابة 5s</li>
+                <li>مقبس UNIX: مهلة 2s</li>
+                <li>محسّن للاستجابة دون التضحية بالموثوقية</li>
+            </ul>
+
+            <h3>7.4 مقارنة الأداء</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>المقياس</th>
+                        <th>الأساسي (Yggdrasil 0.5.12)</th>
+                        <th>عُقدة 0.1.1</th>
+                        <th>التحسين</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>مهلة المصافحة</td>
+                        <td>6s</td>
+                        <td>5s</td>
+                        <td>-16.7%</td>
+                    </tr>
+                    <tr>
+                        <td>مهلة اتصال TCP</td>
+                        <td>5s</td>
+                        <td>3s</td>
+                        <td>-40%</td>
+                    </tr>
+                    <tr>
+                        <td>تأخير إعادة الاتصال الأولى</td>
+                        <td>1s</td>
+                        <td>100ms</td>
+                        <td>-90%</td>
+                    </tr>
+                    <tr>
+                        <td>إنشاء الاتصال</td>
+                        <td>50-100ms</td>
+                        <td>20-40ms</td>
+                        <td>أسرع بنحو 60%</td>
+                    </tr>
+                    <tr>
+                        <td>عبء DNS (غير مخزن مؤقت)</td>
+                        <td>30-50ms</td>
+                        <td>&lt;10ms</td>
+                        <td>تقليل بنحو 75%</td>
+                    </tr>
+                    <tr>
+                        <td>وقت إعادة الاتصال</td>
+                        <td>1-1.5s</td>
+                        <td>500-900ms</td>
+                        <td>أسرع بنحو 50%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>التأثير العملي</strong>: في شبكة من 10 قفزات مع 3 أعطال مؤقتة في الساعة، تقلل هذه التحسينات متوسط زمن الاستجابة من طرف إلى طرف بمقدار 35-55ms وتحسن الاستجابة المحسوسة للمستخدم بشكل كبير.</p>
+
+            <hr>
+
+            <h2 id="operational">8. الخصائص التشغيلية</h2>
+
+            <h3>8.1 استهلاك عرض النطاق</h3>
+
+            <p>العقد مع اتصالات أقران متعددة ستعيد <strong>توجيه حركة المرور للآخرين</strong>:</p>
+
+            <ul>
+                <li>عبء البروتوكول ضئيل (تبادلات مرشح bloom، صيانة الشجرة)</li>
+                <li>إعادة توجيه البيانات متناسبة مع موقع الشبكة والتوصيلية</li>
+                <li>قائمة انتظار عادلة للحزم تمنع تشبع عُقدة واحدة</li>
+            </ul>
+
+            <h3>8.2 معالجة MTU</h3>
+
+            <p>تستخدم عُقدة <strong>قيم MTU عالية</strong> (حتى 65535) على واجهات TUN:</p>
+
+            <ul>
+                <li>اتصالات الأقران القائمة على التدفق تقضي على مشاكل التجزئة</li>
+                <li>يقلل عبء استدعاءات النظام</li>
+                <li>يحسن الإنتاجية ويقلل استخدام CPU</li>
+                <li>يخفف تضخيم TCP-over-TCP</li>
+            </ul>
+
+            <h3>8.3 توصيات جدار الحماية</h3>
+
+            <p>كشبكة <strong>عامة</strong>، عقد عُقدة قابلة للوصول عالمياً افتراضياً.</p>
+
+            <p><strong>موصى به بشدة</strong>: نشر قواعد جدار حماية IPv6 لـ:</p>
+
+            <ul>
+                <li>حظر الاتصالات الواردة غير المتوقعة</li>
+                <li>منع تعرض الخدمات</li>
+                <li>تطبيق مبدأ أقل امتياز</li>
+            </ul>
+
+            <h3>8.4 أفضل ممارسات النشر</h3>
+
+            <h4>إعداد جدار الحماية</h4>
+
+            <p><strong>الوضع الأمني الأدنى</strong> (جميع المنصات):</p>
+            <ul>
+                <li>حظر جميع حركة مرور IPv6 الواردة على واجهة عُقدة افتراضياً</li>
+                <li>السماح فقط بالاتصالات المؤسسة/المرتبطة</li>
+                <li>إدراج الخدمات المطلوبة صراحة في القائمة البيضاء</li>
+            </ul>
+
+            <h4>اختيار الأقران</h4>
+
+            <p><strong>للشبكات المستقرة:</strong></p>
+            <ul>
+                <li>اختر أقراناً قريبين جغرافياً لتقليل زمن الاستجابة</li>
+                <li>حافظ على 2-4 أقران ثابتين للاحتياط</li>
+                <li>تجنب الاتصال المفرط بالأقران (عوائد متناقصة بعد 5-6 أقران)</li>
+            </ul>
+
+            <p><strong>للحالات المتنقلة/الديناميكية:</strong></p>
+            <ul>
+                <li>تفعيل اكتشاف البث المتعدد</li>
+                <li>استخدام أقران عامين كاحتياط</li>
+                <li>قبول زمن استجابة أعلى للراحة</li>
+            </ul>
+
+            <h4>المراقبة</h4>
+
+            <p>مقاييس أساسية للمتابعة:</p>
+            <ul>
+                <li>عدد الأقران النشطين (<code>uqdactl getPeers</code>)</li>
+                <li>حجم جدول التوجيه</li>
+                <li>عبء حركة مرور البروتوكول</li>
+                <li>استقرار الاتصال (تكرار إعادة الاتصال)</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="usecases">9. حالات الاستخدام</h2>
+
+            <h3>9.1 شبكات Mesh المجتمعية</h3>
+
+            <ul>
+                <li>أحياء تبني بنية تحتية مستقلة</li>
+                <li>اتصال محلي مرن</li>
+                <li>تقليل الاعتماد على مزودي خدمة الإنترنت</li>
+            </ul>
+
+            <h3>9.2 الحوسبة الطرفية</h3>
+
+            <ul>
+                <li>اتصال مباشر بين الأجهزة</li>
+                <li>معالجة محلية بزمن استجابة منخفض</li>
+                <li>لا حاجة لوسيط سحابي</li>
+            </ul>
+
+            <h3>9.3 الشبكات الطارئة</h3>
+
+            <ul>
+                <li>نشر سريع بدون بنية تحتية</li>
+                <li>مرونة مع التوصيلية الجزئية</li>
+                <li>اتصال عندما يكون الإنترنت غير متاح</li>
+            </ul>
+
+            <h3>9.4 البحث والتطوير</h3>
+
+            <ul>
+                <li>تجربة البروتوكولات</li>
+                <li>اختبار الأنظمة الموزعة</li>
+                <li>بحث طوبولوجيا الشبكة</li>
+            </ul>
+
+            <h3>9.5 التطبيقات اللامركزية</h3>
+
+            <ul>
+                <li>خدمات من نظير إلى نظير</li>
+                <li>اتصال مقاوم للرقابة</li>
+                <li>تطبيقات تحافظ على الخصوصية</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="limitations">10. القيود والأهداف غير المطلوبة</h2>
+
+            <h3>10.1 ليست بديلاً عن VPN</h3>
+
+            <p>رغم أن عُقدة يمكن استخدامها للشبكات الخاصة، إلا أنها <strong>غير مصممة كـ VPN تقليدي</strong>:</p>
+
+            <ul>
+                <li>الاتصال بأقران عامين يربط الشبكات معاً</li>
+                <li>لا وظيفة بوابة إنترنت مدمجة</li>
+                <li>لا مفهوم عُقدة خروج</li>
+            </ul>
+
+            <h3>10.2 ليست نظام إخفاء هوية</h3>
+
+            <p>عُقدة <strong>لا توفر إخفاء الهوية</strong>:</p>
+
+            <ul>
+                <li>الأقران يعرفون عناوين IP بعضهم البعض</li>
+                <li>قد تكون أنماط حركة المرور قابلة للملاحظة</li>
+                <li>لا حماية ضد تحليل حركة المرور</li>
+            </ul>
+
+            <h3>10.3 قيود مقياس التوجيه الحالي</h3>
+
+            <p><strong>لماذا عدد القفزات فقط؟</strong></p>
+
+            <p>يُفضل البروتوكول <strong>مقاييس قابلة للتحقق وغير قابلة للتلاعب</strong>. قياسات جودة الرابط التفاعلية (RTT، مجسات عرض النطاق) يمكن أن تكون:</p>
+
+            <ul>
+                <li>مزيفة من قبل عقد خبيثة</li>
+                <li>مكلفة للتحقق بشكل مستقل</li>
+                <li>صعبة التأمين في بيئات معادية</li>
+            </ul>
+
+            <p><strong>التأثير العملي:</strong></p>
+
+            <ul>
+                <li>قد تكون بعض اتصالات الأقران القائمة على الإنترنت دون المستوى الأمثل</li>
+                <li>القرب المادي لا يضمن قرب التوجيه</li>
+                <li>يجب على المستخدمين ضبط اتصالات الأقران يدوياً للسيناريوهات الحرجة للأداء</li>
+            </ul>
+
+            <p><strong>العمل المستقبلي</strong>: البحث في مقاييس الجودة الآمنة والقابلة للتحقق مستمر.</p>
+
+            <hr>
+
+            <h2 id="status">11. حالة المشروع وخارطة الطريق</h2>
+
+            <h3>11.1 الحالة الحالية</h3>
+
+            <ul>
+                <li><strong>النضج</strong>: تطوير نشط، جاهز للإنتاج للأحمال غير الحرجة</li>
+                <li><strong>الاستقرار</strong>: موثوق للنشر التجريبي والمجتمعي</li>
+                <li><strong>غير موصى به</strong>: التطبيقات الحرجة أو سلامة الحياة</li>
+            </ul>
+
+            <h3>11.2 التطوير المستقبلي</h3>
+
+            <p>التحسينات المخططة تشمل:</p>
+
+            <ul>
+                <li>تحسينات توجيه متقدمة</li>
+                <li>أدوات مراقبة وتشخيص محسّنة</li>
+                <li>تحليلات أداء محسّنة</li>
+                <li>دعم منصات أوسع</li>
+                <li>تطور بروتوكول محتمل مع ظهور المتطلبات</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="specs">12. المواصفات التقنية</h2>
+
+            <h3>12.1 إصدار البروتوكول</h3>
+
+            <ul>
+                <li>الإصدار الحالي: <strong>متوافق مع 0.5</strong></li>
+                <li>التوافق مع الإصدارات السابقة محفوظ عبر الإصدارات الثانوية</li>
+            </ul>
+
+            <h3>12.2 التشفير</h3>
+
+            <ul>
+                <li><strong>التوقيع</strong>: Ed25519</li>
+                <li><strong>تبادل المفاتيح</strong>: X25519</li>
+                <li><strong>التشفير</strong>: ChaCha20-Poly1305</li>
+            </ul>
+
+            <h3>12.3 مساحة العناوين</h3>
+
+            <ul>
+                <li><strong>نطاق IPv6</strong>: <code>0200::/7</code> (نطاق مهمل من IETF، لا تعارض مع ULA)</li>
+            </ul>
+
+            <h3>12.4 المنصات المدعومة</h3>
+
+            <ul>
+                <li>Linux (نواة 3.x+)</li>
+                <li>Windows (7+)</li>
+                <li>macOS (10.12+)</li>
+                <li>FreeBSD (تجريبي)</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="comparison">13. التحليل المقارن</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>الميزة</th>
+                        <th>عُقدة</th>
+                        <th>Yggdrasil</th>
+                        <th>Tailscale</th>
+                        <th>Nebula</th>
+                        <th>I2P/Tor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>لامركزي</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌ (منسق)</td>
+                        <td>❌ (منارة)</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>شبكة mesh بدون إعدادات</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>⚠️ (مدار)</td>
+                        <td>⚠️ (PKI يدوي)</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>التشفير على مستوى البروتوكول</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>إخفاء الهوية</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>عبور NAT</td>
+                        <td>✅ (ثنائي الاتجاه)</td>
+                        <td>✅</td>
+                        <td>✅ (STUN/نقل)</td>
+                        <td>⚠️ (محدود)</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>التركيز على الأداء</td>
+                        <td>✅</td>
+                        <td>⚠️</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌ (زمن استجابة عالي)</td>
+                    </tr>
+                    <tr>
+                        <td>يعمل بدون إنترنت</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>⚠️</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>جاهز للإنتاج</td>
+                        <td>⚠️ (غير حرج)</td>
+                        <td>⚠️ (ألفا)</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>الشرح</strong>: ✅ دعم كامل | ⚠️ جزئي/محدود | ❌ غير مدعوم</p>
+
+            <hr>
+
+            <h2 id="conclusion">14. الخلاصة</h2>
+
+            <p>تمثل عُقدة <strong>تطوراً يركز على الإنتاج</strong> لمبادئ التوجيه اللامركزي المثبتة، محسّنة لـ:</p>
+
+            <ul>
+                <li><strong>الأداء في العالم الحقيقي</strong>: تحسينات زمن استجابة قابلة للقياس</li>
+                <li><strong>البساطة التشغيلية</strong>: عبء إعداد أدنى</li>
+                <li><strong>النشر العملي</strong>: الشبكات المجتمعية، الحوسبة الطرفية، البحث</li>
+            </ul>
+
+            <h3>ليست حلاً سحرياً</h3>
+
+            <p>عُقدة <strong>لا</strong> تحل جميع مشاكل الشبكات. إنها:</p>
+
+            <ul>
+                <li><strong>ليست</strong> بديلاً عن الإنترنت</li>
+                <li><strong>ليست</strong> نظام إخفاء هوية</li>
+                <li><strong>ليست</strong> جاهزة للتطبيقات الحرجة (بعد)</li>
+            </ul>
+
+            <h3>ما تمكنه عُقدة</h3>
+
+            <ul>
+                <li><strong>ملكية المجتمع</strong> لبنية الشبكة التحتية</li>
+                <li><strong>اتصال مباشر</strong> بدون وسطاء</li>
+                <li><strong>اتصال مرن</strong> في ظروف معاكسة</li>
+                <li><strong>أساس للتطبيقات اللامركزية</strong></li>
+            </ul>
+
+            <h3>انضم إلينا</h3>
+
+            <ul>
+                <li><strong>الوثائق</strong>: <a href="https://github.com/Uqda/Core">https://github.com/Uqda/Core</a></li>
+                <li><strong>الكود المصدري</strong>: <a href="https://github.com/Uqda/Core">https://github.com/Uqda/Core</a></li>
+                <li><strong>المجتمع</strong>: انضم للمناقشات على GitHub</li>
+            </ul>
+
+            <p>تعيد عُقدة السيطرة على بنية الشبكة التحتية لمستخدميها.<br>
+            <strong>ابن الشبكة التي تحتاجها. املك الشبكة التي تبنيها.</strong></p>
+
+            <hr>
+
+            <h2>المراجع</h2>
+
+            <ul>
+                <li>بحث البروتوكول الأصلي: مشروع Yggdrasil Network</li>
+                <li>بدائيات التشفير: libsodium، مكتبة Go القياسية</li>
+                <li>بحث طوبولوجيا الشبكة: منشورات متنوعة حول جداول التجزئة الموزعة والأشجار الممتدة</li>
+            </ul>
+
+            <hr>
+
+            <h2>الاعتراف</h2>
+
+            <p>عُقدة Core مبنية على بروتوكول Yggdrasil Network، مع تحسينات تنفيذ كبيرة وتحسينات تشغيلية. راجع <a href="https://github.com/Uqda/Core/blob/main/ATTRIBUTION.md">ATTRIBUTION.md</a> للاعتمادات الكاملة.</p>
+
+            <hr>
+
+            <p><strong>إصدار الوثيقة</strong>: 1.0<br>
+            <strong>آخر تحديث</strong>: يناير 2026<br>
+            <strong>الاتصال</strong>: <a href="mailto:uqda@proton.me">uqda@proton.me</a><br>
+            <strong>الترخيص</strong>: راجع ملف LICENSE في المستودع</p>
+
+            <div style="margin-top: 50px; padding-top: 30px; border-top: 3px solid #000;">
+                <p style="text-align: center;">
+                    <a href="markdown/WHITEPAPER.md" style="color: #000; text-decoration: underline; font-weight: bold;">تحميل بصيغة Markdown</a> | 
+                    <a href="index.html" style="color: #000; text-decoration: underline; font-weight: bold;">العودة للرئيسية</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
